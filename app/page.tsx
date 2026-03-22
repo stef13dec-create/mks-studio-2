@@ -1,0 +1,278 @@
+"use client";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import TransitionLink from "@/components/TransitionLink";
+import Loader from "@/components/Loader";
+import CustomCursor from "@/components/CustomCursor";
+
+import LiquidImage from "@/components/LiquidImage";
+import { PROJECTS } from "@/data/projects";
+
+export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [activeProject, setActiveProject] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [shineTrigger, setShineTrigger] = useState(0);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrolling || menuOpen) return;
+      
+      if (e.deltaY > 30) {
+        setIsScrolling(true);
+        setActiveProject((prev) => (prev + 1) % PROJECTS.length);
+        setTimeout(() => setIsScrolling(false), 600);
+      } else if (e.deltaY < -30) {
+        setIsScrolling(true);
+        setActiveProject((prev) => (prev - 1 + PROJECTS.length) % PROJECTS.length);
+        setTimeout(() => setIsScrolling(false), 600);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [isScrolling, menuOpen]);
+
+  return (
+    <>
+      <CustomCursor />
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+
+      {/* Fullscreen Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <div className="fixed inset-0 z-50 pointer-events-auto flex">
+            {/* Background Columns */}
+            <div className="absolute inset-0 flex w-full h-full overflow-hidden">
+              {[0, 1, 2, 3, 4].map((col) => (
+                <motion.div
+                  key={col}
+                  className="w-1/5 h-full bg-black"
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0%" }}
+                  exit={{ 
+                    y: "-100%",
+                    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * col }
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.76, 0, 0.24, 1],
+                    delay: 0.05 * (4 - col),
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Menu Content */}
+            <motion.div
+              className="absolute inset-0 z-10 text-white p-6 md:p-10 flex flex-col justify-between"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.3 } }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              {/* Header inside menu */}
+              <header className="w-full flex justify-between items-start">
+                <Link href="/" className="flex flex-col items-start gap-1 group" onClick={() => setMenuOpen(false)}>
+                  <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
+                  <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
+                  <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+                </Link>
+
+                <div className="flex items-center gap-6">
+                  <div className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium opacity-70">
+                    Gallery
+                  </div>
+                  <button
+                    onClick={() => setMenuOpen(false)}
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors relative group"
+                    data-cursor-text="CLOSE"
+                  >
+                    <span className="absolute w-4 md:w-5 h-[1px] bg-current rotate-45 group-hover:bg-black transition-colors" />
+                    <span className="absolute w-4 md:w-5 h-[1px] bg-current -rotate-45 group-hover:bg-black transition-colors" />
+                  </button>
+                </div>
+              </header>
+
+              {/* Main Menu Content */}
+              <div className="flex-1 flex items-center justify-between mt-10 md:mt-20">
+                <nav>
+                  <ul className="flex flex-col gap-4 md:gap-6 text-5xl md:text-7xl lg:text-[7vw] font-sans font-medium uppercase tracking-tighter leading-none">
+                    {["Home", "Projects", "About", "Contact"].map((item, i) => (
+                      <li key={item} onMouseEnter={() => setHoveredItem(i)} onMouseLeave={() => setHoveredItem(null)}>
+                        <Link
+                          href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                          onClick={() => setMenuOpen(false)}
+                          className="flex items-center group"
+                          data-cursor-text="GO"
+                        >
+                          <span className="text-2xl md:text-5xl mr-2 md:mr-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-8 md:w-12 flex justify-end overflow-hidden">
+                            <motion.span
+                              initial={{ x: -20 }}
+                              animate={{ x: hoveredItem === i ? 0 : -20 }}
+                              transition={{ duration: 0.3 }}
+                              className="block"
+                            >
+                              &rarr;
+                            </motion.span>
+                          </span>
+                          <motion.div
+                            animate={{ x: hoveredItem === i ? 20 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="flex"
+                          >
+                            {item.split("").map((char, charIndex) => (
+                              <motion.span
+                                key={charIndex}
+                                animate={{ rotateY: hoveredItem === i ? 180 : 0 }}
+                                transition={{ 
+                                  duration: 0.6, 
+                                  ease: [0.76, 0, 0.24, 1], 
+                                  delay: charIndex * 0.04 
+                                }}
+                                style={{ display: "inline-block", whiteSpace: "pre" }}
+                              >
+                                {char}
+                              </motion.span>
+                            ))}
+                          </motion.div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
+                <div className="hidden md:flex flex-col items-end justify-between h-full py-10 w-1/3">
+                  <p className="text-right text-xs md:text-sm tracking-widest leading-relaxed max-w-xs uppercase opacity-80">
+                    Contemporary moods with traditional twists that work together to deliver a unique look and feel for every client.
+                  </p>
+                  <div className="text-[15vw] leading-none font-sans font-light tracking-tighter">
+                    0{hoveredItem !== null ? hoveredItem + 1 : 1}
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer inside menu */}
+              <footer className="w-full flex justify-between items-end text-[8px] md:text-[10px] tracking-widest uppercase font-medium opacity-80">
+                <div>Commercial Interiors</div>
+                <div className="flex gap-8">
+                  <a href="#" className="hover:opacity-100 transition-opacity">Instagram</a>
+                  <a href="#" className="hover:opacity-100 transition-opacity">Facebook</a>
+                </div>
+                <div className="md:hidden text-6xl leading-none font-sans font-light">
+                  0{hoveredItem !== null ? hoveredItem + 1 : 1}
+                </div>
+              </footer>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <main className="relative w-full h-screen overflow-hidden bg-[#40423d] text-white font-sans">
+        {/* Header */}
+        <header className="absolute top-0 left-0 w-full p-6 md:p-10 z-40 flex justify-between items-start">
+          <Link href="/" className="flex flex-col items-start gap-1 group">
+            <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
+            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
+            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+          </Link>
+          
+          <div className="flex items-center gap-6">
+            <TransitionLink href="/gallery" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
+              Gallery
+            </TransitionLink>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/30 flex flex-col items-center justify-center gap-1.5 hover:bg-white hover:text-black transition-colors"
+            >
+              <span className="w-4 md:w-5 h-[1px] bg-current block" />
+              <span className="w-4 md:w-5 h-[1px] bg-current block" />
+            </button>
+          </div>
+        </header>
+
+        {/* Left Indicator */}
+        <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-30 pointer-events-none">
+          <div className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-white/20 flex items-center justify-center">
+          </div>
+          <span className="text-[8px] md:text-[10px] tracking-widest uppercase opacity-80">Scroll</span>
+        </div>
+
+        {/* Right Indicator */}
+        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-30 text-[10px] md:text-xs tracking-widest uppercase font-medium opacity-80 pointer-events-none">
+          {activeProject + 1} - {PROJECTS.length}
+        </div>
+
+        {/* Footer */}
+        <footer className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 flex justify-between items-end z-30 text-[8px] md:text-[10px] tracking-widest uppercase font-medium opacity-80">
+          <div className="hidden md:block">Commercial Interiors</div>
+          <TransitionLink href="/projects" className="underline underline-offset-4 hover:opacity-100 transition-opacity mx-auto md:mx-0">
+            View All Projects
+          </TransitionLink>
+          <div className="hidden md:block">&copy;2026</div>
+        </footer>
+
+        {/* Center Content (Text & Image) */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          {/* Image Slider */}
+          <div className="relative z-20 flex flex-col items-center gap-6">
+            {/* Top Text */}
+            <div className="absolute bottom-full mb-6 md:mb-10 w-full flex justify-center pointer-events-none">
+              <h2
+                key={shineTrigger}
+                className={`text-lg md:text-2xl font-sans tracking-[0.4em] uppercase whitespace-nowrap ${shineTrigger > 0 ? 'animate-shine' : 'text-transparent'}`}
+              >
+                ICONIC PROJECTS
+              </h2>
+            </div>
+
+            <div 
+              className="relative w-[65vw] md:w-[28vw] h-[55vh] md:h-[65vh] pointer-events-auto overflow-hidden group transition-transform duration-[0.8s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[0.95]"
+              onMouseEnter={() => setShineTrigger(prev => prev + 1)}
+            >
+              <TransitionLink href={`/projects/${PROJECTS[activeProject].id}`} className="block w-full h-full" data-cursor-text="VIEW">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeProject}
+                    initial={{ opacity: 0, y: "100%" }}
+                    animate={{ opacity: 1, y: "0%" }}
+                    exit={{ opacity: 0, y: "-100%" }}
+                    transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+                    className="absolute inset-0"
+                  >
+                    <LiquidImage
+                      src={PROJECTS[activeProject].image}
+                      alt={PROJECTS[activeProject].title}
+                      className="object-cover transition-transform duration-[0.8s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.1]"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </TransitionLink>
+            </div>
+            
+            {/* Project Info */}
+            <div className="flex flex-col items-center text-center overflow-hidden h-12">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeProject}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+                  className="flex flex-col items-center"
+                >
+                  <span className="text-sm md:text-base tracking-[0.2em] uppercase font-medium">{PROJECTS[activeProject].title}</span>
+                  <span className="text-[10px] md:text-xs tracking-widest uppercase opacity-70 mt-1">{PROJECTS[activeProject].subtitle}</span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
