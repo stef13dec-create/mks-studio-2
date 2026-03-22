@@ -6,20 +6,7 @@
   --font-serif: var(--font-playfair);
 }
 
-:root {
-  --bg: #E4E3E0;
-  --ink: #141414;
-}
-
-.dark {
-  --bg: #141414;
-  --ink: #E4E3E0;
-}
-
 body {
-  background-color: var(--bg);
-  color: var(--ink);
-  transition: background-color 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
 }
 

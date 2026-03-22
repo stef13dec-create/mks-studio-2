@@ -11,11 +11,11 @@ export default function About() {
       <CustomCursor />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full p-6 md:p-10 z-50 flex justify-between items-start mix-blend-difference">
-        <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
+      <nav className="fixed top-0 left-0 w-full p-4 md:p-6 z-50 flex justify-between items-start mix-blend-difference">
+        <TransitionLink href="/" className="absolute top-0 left-0 p-1 md:p-2 group">
           <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
         </TransitionLink>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ml-auto">
           <TransitionLink href="/contact" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
             Contact
           </TransitionLink>
@@ -42,7 +42,7 @@ export default function About() {
         >
           <Image
             src="/about-hero.png"
-            alt="Liron Moran Interiors Studio"
+            alt="MKS Studio Interior"
             fill
             className="object-cover"
             priority

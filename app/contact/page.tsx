@@ -13,7 +13,7 @@ export default function Contact() {
       {/* LEFT PANEL - Image */}
       <div className="relative hidden md:block w-1/2 h-full overflow-hidden">
         {/* Logo top left */}
-        <div className="absolute top-8 left-8 z-50 mix-blend-difference">
+        <div className="absolute top-0 left-0 p-1 md:p-2 z-50 mix-blend-difference">
           <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
             <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </TransitionLink>
@@ -42,7 +42,7 @@ export default function Contact() {
       <div className="relative w-full md:w-1/2 h-full flex flex-col justify-between p-8 md:p-16 lg:p-24 overflow-y-auto">
 
         {/* Mobile Logo */}
-        <div className="md:hidden mb-12">
+        <div className="md:hidden mb-4">
           <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
             <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] sm:w-[180px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </TransitionLink>
@@ -62,7 +62,7 @@ export default function Contact() {
           className="mt-8 md:mt-0"
         >
           <h1 className="text-5xl md:text-7xl font-sans font-light tracking-tighter leading-none mb-12">
-            Let's<br />Talk.
+            Let&apos;s<br />Talk.
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">

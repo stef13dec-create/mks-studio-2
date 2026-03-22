@@ -70,7 +70,7 @@ export default function Gallery() {
       {/* LEFT PANEL */}
       <div className="relative w-1/2 h-full overflow-hidden bg-black">
         {/* Logo top left */}
-        <div className="absolute top-8 left-8 z-50 mix-blend-difference">
+        <div className="absolute top-0 left-0 p-1 md:p-2 z-50 mix-blend-difference">
           <TransitionLink href="/" className="group">
             <Image src="/logo.png" alt="MKS Studio Logo" width={240} height={105} className="w-[120px] md:w-[180px] lg:w-[240px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </TransitionLink>
@@ -192,9 +192,12 @@ export default function Gallery() {
 
         {/* Bottom Right Icons */}
         <div className="absolute bottom-8 right-8 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer">
+          <button
+            aria-label="Accessibility options"
+            className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+          >
             <Accessibility size={14} />
-          </div>
+          </button>
         </div>
 
       </div>

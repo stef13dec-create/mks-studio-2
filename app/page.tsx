@@ -25,10 +25,12 @@ export default function Home() {
       if (e.deltaY > 30) {
         setIsScrolling(true);
         setActiveProject((prev) => (prev + 1) % PROJECTS.length);
+        setShineTrigger((prev) => prev + 1);
         setTimeout(() => setIsScrolling(false), 600);
       } else if (e.deltaY < -30) {
         setIsScrolling(true);
         setActiveProject((prev) => (prev - 1 + PROJECTS.length) % PROJECTS.length);
+        setShineTrigger((prev) => prev + 1);
         setTimeout(() => setIsScrolling(false), 600);
       }
     };
@@ -170,14 +172,17 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main className="relative w-full h-screen overflow-hidden bg-[#40423d] text-white font-sans">
+      <main 
+        className="relative w-full h-screen overflow-hidden text-white font-sans transition-colors duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+        style={{ backgroundColor: ["#51534E", "#40423D", "#2F312D"][activeProject % 3] }}
+      >
         {/* Header */}
-        <header className="absolute top-0 left-0 w-full p-6 md:p-10 z-40 flex justify-between items-start">
-          <Link href="/" className="flex flex-col items-start gap-1 group">
+        <header className="absolute top-0 left-0 w-full p-4 md:p-6 z-40 flex justify-between items-start">
+          <Link href="/" className="absolute top-0 left-0 p-1 md:p-2 group">
             <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 ml-auto">
             <TransitionLink href="/gallery" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
               Gallery
             </TransitionLink>
@@ -206,9 +211,11 @@ export default function Home() {
         {/* Footer */}
         <footer className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 flex justify-between items-end z-30 text-[8px] md:text-[10px] tracking-widest uppercase font-medium opacity-80">
           <div className="hidden md:block">Commercial Interiors</div>
-          <TransitionLink href="/projects" className="underline underline-offset-4 hover:opacity-100 transition-opacity mx-auto md:mx-0">
-            View All Projects
-          </TransitionLink>
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex justify-center w-full max-w-[200px]">
+            <TransitionLink href="/projects" className="underline underline-offset-4 hover:opacity-100 transition-opacity text-center whitespace-nowrap">
+              View All Projects
+            </TransitionLink>
+          </div>
           <div className="hidden md:block">&copy;2026</div>
         </footer>
 
@@ -220,7 +227,7 @@ export default function Home() {
             <div className="absolute bottom-full mb-6 md:mb-10 w-full flex justify-center pointer-events-none">
               <h2
                 key={shineTrigger}
-                className={`text-lg md:text-2xl font-sans tracking-[0.4em] uppercase whitespace-nowrap ${shineTrigger > 0 ? 'animate-shine' : 'text-transparent'}`}
+                className={`text-lg md:text-2xl font-sans tracking-[0.4em] pl-[0.4em] uppercase whitespace-nowrap ${shineTrigger > 0 ? 'animate-shine' : 'text-transparent'}`}
               >
                 ICONIC PROJECTS
               </h2>
@@ -261,8 +268,8 @@ export default function Home() {
                   transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
                   className="flex flex-col items-center"
                 >
-                  <span className="text-sm md:text-base tracking-[0.2em] uppercase font-medium">{PROJECTS[activeProject].title}</span>
-                  <span className="text-[10px] md:text-xs tracking-widest uppercase opacity-70 mt-1">{PROJECTS[activeProject].subtitle}</span>
+                  <span className="text-sm md:text-base tracking-[0.2em] pl-[0.2em] uppercase font-medium">{PROJECTS[activeProject].title}</span>
+                  <span className="text-[10px] md:text-xs tracking-widest pl-[0.1em] uppercase opacity-70 mt-1">{PROJECTS[activeProject].subtitle}</span>
                 </motion.div>
               </AnimatePresence>
             </div>
