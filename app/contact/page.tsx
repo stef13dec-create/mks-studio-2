@@ -26,7 +26,7 @@ export default function Contact() {
           className="absolute inset-0"
         >
           <Image
-            src="/contact-hero.png"
+            src="/projects/bucharest-hq-hero.png"
             alt="MKS Studio Architecture Detail"
             fill
             className="object-cover"
@@ -68,7 +68,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div>
               <h3 className="text-[10px] tracking-[0.2em] uppercase opacity-50 mb-4">Email</h3>
-              <a href="mailto:hello@lironmoran.com" className="text-lg md:text-xl font-light hover:italic transition-all inline-block hover:translate-x-1 duration-300">hello@lironmoran.com</a>
+              <a href="mailto:hello@mks-studio.com" className="text-lg md:text-xl font-light hover:italic transition-all inline-block hover:translate-x-1 duration-300">hello@mks-studio.com</a>
             </div>
             <div>
               <h3 className="text-[10px] tracking-[0.2em] uppercase opacity-50 mb-4">Phone</h3>

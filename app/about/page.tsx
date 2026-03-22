@@ -41,7 +41,7 @@ export default function About() {
           className="relative w-full aspect-[21/9] mb-24 overflow-hidden rounded-sm"
         >
           <Image
-            src="/about-hero.png"
+            src="/projects/timisoara-hub-hero.png"
             alt="MKS Studio Interior"
             fill
             className="object-cover"
@@ -58,7 +58,7 @@ export default function About() {
           >
             <h2 className="text-xs tracking-[0.3em] uppercase mb-6 opacity-60">Our Philosophy</h2>
             <p className="text-lg md:text-xl font-light leading-relaxed text-[#D1D1D1]">
-              At Liron Moran Interiors, we believe that the environment you inhabit profoundly impacts your daily life and productivity. Our approach is rooted in contemporary moods intertwined with traditional twists, delivering a unique and highly personalized look for every client.
+              At MKS Studio, we believe that the environment you inhabit profoundly impacts your daily life and productivity. Our approach is rooted in contemporary moods intertwined with traditional twists, delivering a unique and highly personalized look for every client.
             </p>
           </motion.div>
 
@@ -83,7 +83,7 @@ export default function About() {
           <a href="#" className="hover:opacity-100 transition-opacity">Instagram</a>
           <a href="#" className="hover:opacity-100 transition-opacity">LinkedIn</a>
         </div>
-        <div>&copy;2026 Liron Moran</div>
+        <div>&copy;2026 MKS Studio</div>
       </footer>
     </div>
   );

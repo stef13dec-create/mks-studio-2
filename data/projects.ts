@@ -57,9 +57,9 @@ export const PROJECTS = [
 ];
 
 export const GALLERY_IMAGES = [
-  { src: "https://picsum.photos/seed/gallery1/1920/1080", alt: "Kitchen" },
-  { src: "https://picsum.photos/seed/gallery2/1920/1080", alt: "Living Room" },
-  { src: "https://picsum.photos/seed/gallery3/1920/1080", alt: "Office" },
-  { src: "https://picsum.photos/seed/gallery4/1920/1080", alt: "Hallway" },
-  { src: "https://picsum.photos/seed/gallery5/1920/1080", alt: "Meeting Room" },
+  { src: "/projects/bucharest-hq-hero.png", alt: "Bucharest HQ - Main Office" },
+  { src: "/projects/cluj-office-hero.png", alt: "Cluj Office - Creative Space" },
+  { src: "/projects/brasov-retreat-hero.png", alt: "Brasov Retreat - Alpine Lobby" },
+  { src: "/projects/timisoara-hub-hero.png", alt: "Timisoara Hub - Innovation Center" },
+  { src: "/projects/bucharest-hq-1.png", alt: "Bucharest HQ - Meeting Room" },
 ];
