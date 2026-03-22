@@ -4,28 +4,55 @@ export const PROJECTS = [
     title: "Bucharest HQ",
     subtitle: "Tech Hub",
     category: "Commercial",
-    image: "/project-bucharest.png",
+    date: "2023",
+    size: "1,200 m²",
+    image: "/projects/bucharest-hq-hero.png",
+    description: "Our hallmark project in the capital. The design focuses on transparency and fluidity, utilizing high-end glass partitions and a monochrome palette to create a tech-forward atmosphere that encourages collaboration.",
+    gallery: [
+      "/projects/bucharest-hq-1.png",
+      "/projects/bucharest-hq-2.png"
+    ]
   },
   {
     id: "cluj-office",
     title: "Cluj Office",
     subtitle: "Creative Studio",
     category: "Creative",
-    image: "/project-cluj.png",
+    date: "2022",
+    size: "850 m²",
+    image: "/projects/cluj-office-hero.png",
+    description: "A creative hub designed for a digital agency. We combined industrial elements like exposed brick with modern acoustic solutions and bespoke wooden furniture to foster an inspiring and cozy workspace.",
+    gallery: [
+      "/projects/cluj-office-1.png",
+      "/projects/cluj-office-2.png"
+    ]
   },
   {
     id: "brasov-retreat",
     title: "Brasov Retreat",
     subtitle: "Alpine Resort",
     category: "Hospitality",
-    image: "/project-brasov.png",
+    date: "2024",
+    size: "2,100 m²",
+    image: "/projects/brasov-retreat-hero.png",
+    description: "Nestled in the Carpathian Mountains, this resort lobby redefines alpine luxury. We used local natural stone and timber, paired with floor-to-ceiling vistas, to create a seamless connection between the interior and the breathtaking landscape.",
+    gallery: [
+      "/projects/brasov-retreat-1.png",
+      "/projects/brasov-retreat-2.png"
+    ]
   },
   {
     id: "timisoara-hub",
     title: "Timisoara Hub",
     subtitle: "Innovation Center",
     category: "Corporate",
-    image: "/project-timisoara.png",
+    date: "2023",
+    size: "1,500 m²",
+    image: "/projects/timisoara-hub-hero.png",
+    description: "A futuristic innovation center that prioritizes ergonomic design and integrated technology. The space features green living walls and modular pods, creating a flexible environment for cutting-edge research and development.",
+    gallery: [
+      "/projects/timisoara-hub-1.png"
+    ]
   },
 ];
 
