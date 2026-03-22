@@ -1,13 +1,12 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, Playfair_Display } from 'next/font/google';
-import './globals.css'; // Global styles
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { TransitionProvider } from '@/components/TransitionProvider';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
-
-import { TransitionProvider } from '@/components/TransitionProvider';
 
 export const metadata: Metadata = {
   title: 'MKS Studio | Commercial Interiors',

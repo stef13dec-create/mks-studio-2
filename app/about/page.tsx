@@ -13,46 +13,44 @@ export default function About() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 w-full p-6 md:p-10 z-50 flex justify-between items-start mix-blend-difference">
         <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
-          <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
-          <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
-          <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+          <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
         </TransitionLink>
         <div className="flex items-center gap-6">
-           <TransitionLink href="/contact" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
-              Contact
-            </TransitionLink>
+          <TransitionLink href="/contact" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
+            Contact
+          </TransitionLink>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="pt-40 pb-20 px-6 md:px-20 lg:px-40 flex flex-col items-center">
-        <motion.h1 
+      <main className="pt-40 md:pt-48 lg:pt-56 pb-20 px-6 md:px-20 lg:px-40 flex flex-col items-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-center mb-16"
         >
-          Designing spaces that inspire,<br className="hidden md:block"/>
+          Designing spaces that inspire,<br className="hidden md:block" />
           elevate, and define.
         </motion.h1>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
           className="relative w-full aspect-[21/9] mb-24 overflow-hidden rounded-sm"
         >
-          <Image 
-            src="/about-hero.png" 
-            alt="Liron Moran Interiors Studio" 
-            fill 
+          <Image
+            src="/about-hero.png"
+            alt="Liron Moran Interiors Studio"
+            fill
             className="object-cover"
             priority
           />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 w-full max-w-5xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -64,7 +62,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}

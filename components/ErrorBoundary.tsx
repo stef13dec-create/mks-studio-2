@@ -30,7 +30,7 @@ export class ErrorBoundary extends Component<Props, State> {
     // Strip DOM nodes from the original error object to prevent Next.js dev overlay from crashing
     try {
       for (const key in error) {
-        if (error.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(error, key)) {
           const val = (error as any)[key];
           if (val && typeof val === 'object' && 'nodeType' in val) {
             delete (error as any)[key];
@@ -38,11 +38,6 @@ export class ErrorBoundary extends Component<Props, State> {
         }
       }
     } catch (e) {}
-
-    // Log the error properties to see if any is a DOM node
-    console.log('Real error caught by ErrorBoundary:');
-    console.log('Message:', error.message);
-    console.log('Stack:', error.stack);
   }
 
   public render() {

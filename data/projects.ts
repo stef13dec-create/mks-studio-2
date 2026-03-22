@@ -3,25 +3,25 @@ export const PROJECTS = [
     id: "bucharest-hq",
     title: "Bucharest HQ",
     subtitle: "Tech Hub",
-    image: "https://picsum.photos/seed/bucharest-hq/1920/1080",
+    image: "/project-bucharest.png",
   },
   {
     id: "cluj-office",
     title: "Cluj Office",
     subtitle: "Creative Studio",
-    image: "https://picsum.photos/seed/cluj-office/1920/1080",
+    image: "/project-cluj.png",
   },
   {
     id: "brasov-retreat",
     title: "Brasov Retreat",
     subtitle: "Alpine Resort",
-    image: "https://picsum.photos/seed/brasov-retreat/1920/1080",
+    image: "/project-brasov.png",
   },
   {
     id: "timisoara-hub",
     title: "Timisoara Hub",
     subtitle: "Innovation Center",
-    image: "https://picsum.photos/seed/timisoara-hub/1920/1080",
+    image: "/project-timisoara.png",
   },
 ];
 

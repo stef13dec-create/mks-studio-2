@@ -32,10 +32,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       style={{ transform: progress >= 100 ? "translateY(-100%)" : "translateY(0%)" }}
     >
       <div className="flex justify-end text-6xl md:text-8xl lg:text-[10vw] font-light mb-8 overflow-hidden leading-none tracking-tighter">
-        <div
-          className="flex items-baseline transition-transform duration-1000 ease-out"
-          style={{ transform: "translateY(0%)" }}
-        >
+        <div className="flex items-baseline transition-transform duration-1000 ease-out">
           <span>{displayProgress}</span>
           <span className="text-2xl md:text-4xl ml-2">%</span>
         </div>
@@ -47,10 +44,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
         />
       </div>
       <div className="overflow-hidden">
-        <p
-          className="text-xs md:text-sm tracking-widest opacity-70 transition-transform duration-1000 ease-out delay-200"
-          style={{ transform: "translateY(0%)" }}
-        >
+        <p className="text-xs md:text-sm tracking-widest opacity-70 transition-transform duration-1000 ease-out delay-200">
           MKS Studio &copy; 2026
         </p>
       </div>

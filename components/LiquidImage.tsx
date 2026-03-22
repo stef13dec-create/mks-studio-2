@@ -120,8 +120,8 @@ export default function LiquidImage({ src, alt, className = "" }: LiquidImagePro
       }
     );
 
-    let mouse = new THREE.Vector2(0.5, 0.5);
-    let targetMouse = new THREE.Vector2(0.5, 0.5);
+    const mouse = new THREE.Vector2(0.5, 0.5);
+    const targetMouse = new THREE.Vector2(0.5, 0.5);
     let currentTrailIndex = 0;
     let isHovering = false;
 

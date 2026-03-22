@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isScrolling || menuOpen) return;
-      
+
       if (e.deltaY > 30) {
         setIsScrolling(true);
         setActiveProject((prev) => (prev + 1) % PROJECTS.length);
@@ -54,7 +54,7 @@ export default function Home() {
                   className="w-1/5 h-full bg-black"
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
-                  exit={{ 
+                  exit={{
                     y: "-100%",
                     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * col }
                   }}
@@ -78,9 +78,7 @@ export default function Home() {
               {/* Header inside menu */}
               <header className="w-full flex justify-between items-start">
                 <Link href="/" className="flex flex-col items-start gap-1 group" onClick={() => setMenuOpen(false)}>
-                  <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
-                  <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
-                  <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+                  <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
                 </Link>
 
                 <div className="flex items-center gap-6">
@@ -129,10 +127,10 @@ export default function Home() {
                               <motion.span
                                 key={charIndex}
                                 animate={{ rotateY: hoveredItem === i ? 180 : 0 }}
-                                transition={{ 
-                                  duration: 0.6, 
-                                  ease: [0.76, 0, 0.24, 1], 
-                                  delay: charIndex * 0.04 
+                                transition={{
+                                  duration: 0.6,
+                                  ease: [0.76, 0, 0.24, 1],
+                                  delay: charIndex * 0.04
                                 }}
                                 style={{ display: "inline-block", whiteSpace: "pre" }}
                               >
@@ -176,11 +174,9 @@ export default function Home() {
         {/* Header */}
         <header className="absolute top-0 left-0 w-full p-6 md:p-10 z-40 flex justify-between items-start">
           <Link href="/" className="flex flex-col items-start gap-1 group">
-            <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
-            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
-            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+            <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </Link>
-          
+
           <div className="flex items-center gap-6">
             <TransitionLink href="/gallery" className="hidden md:block text-xs tracking-[0.2em] uppercase font-medium hover:opacity-70 transition-opacity">
               Gallery
@@ -230,7 +226,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div 
+            <div
               className="relative w-[65vw] md:w-[28vw] h-[55vh] md:h-[65vh] pointer-events-auto overflow-hidden group transition-transform duration-[0.8s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[0.95]"
               onMouseEnter={() => setShineTrigger(prev => prev + 1)}
             >
@@ -253,7 +249,7 @@ export default function Home() {
                 </AnimatePresence>
               </TransitionLink>
             </div>
-            
+
             {/* Project Info */}
             <div className="flex flex-col items-center text-center overflow-hidden h-12">
               <AnimatePresence mode="wait">

@@ -15,7 +15,7 @@ export default function Contact() {
         {/* Logo top left */}
         <div className="absolute top-8 left-8 z-50 mix-blend-difference">
           <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
-            <div className="text-2xl font-light tracking-widest leading-none">LM</div>
+            <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </TransitionLink>
         </div>
 
@@ -33,38 +33,36 @@ export default function Contact() {
             priority
           />
         </motion.div>
-        
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* RIGHT PANEL - Form & Info */}
       <div className="relative w-full md:w-1/2 h-full flex flex-col justify-between p-8 md:p-16 lg:p-24 overflow-y-auto">
-        
+
         {/* Mobile Logo */}
         <div className="md:hidden mb-12">
           <TransitionLink href="/" className="flex flex-col items-start gap-1 group">
-            <div className="text-2xl md:text-3xl font-light tracking-widest leading-none">LM</div>
-            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Liron Moran</div>
-            <div className="text-[6px] md:text-[8px] tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">Interiors</div>
+            <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] sm:w-[180px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </TransitionLink>
         </div>
 
         {/* Right Corner Nav */}
         <div className="absolute top-8 right-8 z-50 text-[10px] md:text-xs tracking-widest uppercase font-medium opacity-80 mix-blend-difference">
-           <TransitionLink href="/about" className="hover:opacity-70 transition-opacity text-white">
-              About
-            </TransitionLink>
+          <TransitionLink href="/about" className="hover:opacity-70 transition-opacity text-white">
+            About
+          </TransitionLink>
         </div>
 
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-           className="mt-8 md:mt-0"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+          className="mt-8 md:mt-0"
         >
           <h1 className="text-5xl md:text-7xl font-sans font-light tracking-tighter leading-none mb-12">
-            Let's<br/>Talk.
+            Let's<br />Talk.
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -80,33 +78,33 @@ export default function Contact() {
 
           <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
             <div className="relative group">
-              <input 
-                type="text" 
-                placeholder="Name" 
-                className="w-full bg-transparent border-b border-white/20 py-4 text-base md:text-lg font-light focus:outline-none focus:border-white transition-colors peer"
-              />
-              <span className="absolute left-0 bottom-0 w-0 h-px bg-white transition-all duration-500 peer-focus:w-full" />
-            </div>
-            
-            <div className="relative group">
-              <input 
-                type="email" 
-                placeholder="Email" 
+              <input
+                type="text"
+                placeholder="Name"
                 className="w-full bg-transparent border-b border-white/20 py-4 text-base md:text-lg font-light focus:outline-none focus:border-white transition-colors peer"
               />
               <span className="absolute left-0 bottom-0 w-0 h-px bg-white transition-all duration-500 peer-focus:w-full" />
             </div>
 
             <div className="relative group">
-              <textarea 
-                placeholder="Tell us about your project" 
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full bg-transparent border-b border-white/20 py-4 text-base md:text-lg font-light focus:outline-none focus:border-white transition-colors peer"
+              />
+              <span className="absolute left-0 bottom-0 w-0 h-px bg-white transition-all duration-500 peer-focus:w-full" />
+            </div>
+
+            <div className="relative group">
+              <textarea
+                placeholder="Tell us about your project"
                 rows={3}
                 className="w-full bg-transparent border-b border-white/20 py-4 text-base md:text-lg font-light focus:outline-none focus:border-white transition-colors peer resize-none"
               />
               <span className="absolute left-0 bottom-0 w-0 h-px bg-white transition-all duration-500 peer-focus:w-full" />
             </div>
 
-            <button 
+            <button
               type="submit"
               className="mt-8 px-10 py-5 rounded-full text-[10px] md:text-xs tracking-[0.2em] uppercase border border-white/30 hover:bg-white hover:text-black transition-all duration-300"
               data-cursor-effect="true"
@@ -117,14 +115,14 @@ export default function Contact() {
         </motion.div>
 
         {/* Footer info */}
-        <motion.div 
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ duration: 0.8, delay: 0.6 }}
-           className="mt-20 flex justify-between items-end text-[8px] md:text-[10px] tracking-widest uppercase opacity-50"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-20 flex justify-between items-end text-[8px] md:text-[10px] tracking-widest uppercase opacity-50"
         >
           <div>
-            123 Design Avenue<br/>
+            123 Design Avenue<br />
             New York, NY 10012
           </div>
           <div className="text-right flex flex-col gap-1">
