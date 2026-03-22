@@ -142,9 +142,31 @@ export default function LiquidImage({ src, alt, className = "" }: LiquidImagePro
       isHovering = false;
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      isHovering = true;
+      const touch = e.touches[0];
+      const rect = container.getBoundingClientRect();
+      mouse.x = targetMouse.x = (touch.clientX - rect.left) / rect.width;
+      mouse.y = targetMouse.y = 1.0 - ((touch.clientY - rect.top) / rect.height);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      const rect = container.getBoundingClientRect();
+      targetMouse.x = (touch.clientX - rect.left) / rect.width;
+      targetMouse.y = 1.0 - ((touch.clientY - rect.top) / rect.height);
+    };
+
+    const handleTouchEnd = () => {
+      isHovering = false;
+    };
+
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseenter', handleMouseEnter);
     container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    container.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     const handleResize = () => {
       if (!container) return;
@@ -200,6 +222,9 @@ export default function LiquidImage({ src, alt, className = "" }: LiquidImagePro
         container.removeEventListener('mousemove', handleMouseMove);
         container.removeEventListener('mouseenter', handleMouseEnter);
         container.removeEventListener('mouseleave', handleMouseLeave);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+        container.removeEventListener('touchend', handleTouchEnd);
         if (renderer.domElement && container.contains(renderer.domElement)) {
           container.removeChild(renderer.domElement);
         }
