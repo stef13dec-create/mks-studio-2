@@ -184,16 +184,7 @@ export default function ProjectsPage() {
       <div className="fixed inset-0 z-40 pointer-events-none">
         {/* Header */}
         <header className="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-start pointer-events-auto">
-          <TransitionLink href="/" className="absolute top-0 left-0 p-1 md:p-2 group">
-            <Image
-              src="/logo.png"
-              alt="MKS Studio Logo"
-              width={300}
-              height={135}
-              className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity"
-              priority
-            />
-          </TransitionLink>
+
 
           <div className="flex items-center gap-6 ml-auto">
             <TransitionLink
@@ -211,31 +202,32 @@ export default function ProjectsPage() {
           </div>
         </header>
 
-        {/* Active Project Counter */}
-        <div className="absolute top-6 md:top-10 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-1/2 md:mr-20 flex items-center gap-3 z-50">
-          <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/50 font-medium">
-            Projects
-          </span>
-          <span className="text-[10px] md:text-xs text-white/30">|</span>
-          <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/50 font-medium">
-            {String(activeIndex + 1).padStart(2, "0")}
-          </span>
-        </div>
+        {/* Centered Project Header (PROJECTS | 01 TITLE) */}
+        <div className="absolute top-6 md:top-10 left-1/2 -translate-x-1/2 flex items-center justify-center whitespace-nowrap z-50">
+          <div className="flex items-center gap-2 md:gap-3">
+            <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/40 font-medium">
+              Projects
+            </span>
+            <span className="text-[10px] md:text-xs text-white/20">|</span>
+            <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/40 font-medium mr-2 md:mr-4">
+              {String(activeIndex + 1).padStart(2, "0")}
+            </span>
+          </div>
 
-        {/* Active Project Title */}
-        <div className="hidden md:flex absolute top-10 left-1/2 -translate-x-1/2 items-center justify-center overflow-hidden h-6">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-              className="text-xs tracking-[0.3em] uppercase text-white/70 font-medium whitespace-nowrap"
-            >
-              {projects[activeIndex]?.title}
-            </motion.span>
-          </AnimatePresence>
+          <div className="overflow-hidden h-6 flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={activeIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+                className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/90 font-bold"
+              >
+                {projects[activeIndex]?.title}
+              </motion.span>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Bottom Progress Bar */}

@@ -210,7 +210,7 @@ export default function Home() {
         {/* Header */}
         <header className="absolute top-0 left-0 w-full p-4 md:p-6 z-40 flex justify-between items-start">
           <Link href="/" className="absolute top-0 left-0 p-1 md:p-2 group">
-            <Image src="/logo.png" alt="MKS Studio Logo" width={300} height={135} className="w-[140px] md:w-[220px] lg:w-[300px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
+            <Image src="/logo.png" alt="MKS Studio Logo" width={150} height={68} className="w-[70px] md:w-[110px] lg:w-[150px] h-auto object-contain invert brightness-0 opacity-80 group-hover:opacity-100 transition-opacity" priority />
           </Link>
 
           <div className="flex items-center gap-6 ml-auto">
